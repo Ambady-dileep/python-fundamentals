@@ -1,13 +1,11 @@
 """
-05_encapsulation.py
-
 This file demonstrates:
 - Public variables
 - Protected variables (convention)
 - Private variables (name mangling)
+- Name mangling explanation
 - Encapsulation using properties (Pythonic way)
 """
-
 
 # -------------------------
 # PUBLIC VARIABLE
@@ -62,6 +60,25 @@ print("Private name via mangling:", student3._PrivateStudent__name)
 
 
 # -------------------------
+# NAME MANGLING EXPLAINED
+# -------------------------
+"""
+Name mangling is Python's internal mechanism to prevent accidental
+overwrites in inheritance.
+
+- Adding '__' triggers name mangling.
+- Python internally renames it as _ClassName__variable.
+- This is not true privacy.
+"""
+
+print("\n--- Name Mangling Demonstration ---")
+print(student3.__dict__)  # shows '_PrivateStudent__name'
+
+# Accessing via mangled name (works but discouraged)
+print("Access via mangled name:", student3._PrivateStudent__name)
+
+
+# -------------------------
 # ENCAPSULATION USING PROPERTIES
 # -------------------------
 class StudentWithProperty:
@@ -90,11 +107,11 @@ print("Updated age:", student4.age)
 # Uncommenting this will raise ValueError
 # student4.age = -5
 
-
 # -------------------------
 # KEY TAKEAWAYS
 # -------------------------
 # - Public: no protection
 # - Protected (_): convention-based warning
-# - Private (__): name mangling, not true privacy
+# - Private (__): triggers name mangling, not true privacy
+# - Name mangling prevents accidental override in inheritance
 # - Properties: clean and Pythonic encapsulation
