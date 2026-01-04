@@ -1,6 +1,4 @@
 """
-08_composition_vs_inheritance.py
-
 This file demonstrates:
 - Inheritance (IS-A relationship)
 - Composition (HAS-A relationship)
